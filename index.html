@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATVRN | Wybierz wersję</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #a855f7;
+            --blue: #3b82f6;
+            --dark: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, rgba(168, 85, 247, 0.15), transparent 50%),
+                        radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.1), transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .badge {
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--purple);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 60%, rgba(255,255,255,0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: #888;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Nowa sekcja przycisków */
+        .cta-group {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .card-choice {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 30px;
+            width: 320px;
+            transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-choice:hover {
+            border-color: var(--purple);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .card-choice .icon-big {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card-choice h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card-choice p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Styl dla pobierania */
+        .btn-download {
+            background: white;
+            color: black;
+        }
+        
+        .btn-download:hover {
+            background: #f0f0f0;
+            box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        /* Styl dla wersji online */
+        .btn-online {
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            color: white;
+        }
+
+        .btn-online:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .version-tag {
+            font-size: 0.7rem;
+            color: #444;
+            margin-top: 10px;
+        }
+
+        /* Reszta stylów kafelków i footera zostaje bez zmian */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 40px;
+            transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: var(--purple);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #777;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header>
+            <div class="badge">DISCORD: .1kritsu</div>
+            <h1>SATVRN TRANSFER</h1>
+            <p class="subtitle">Wybierz sposób transmisji danych. Lokalna potęga lub globalna swoboda P2P.</p>
+            
+            <div class="cta-group">
+                <div class="card-choice">
+                    <div class="icon-big">
+                        <img src="https://img.icons8.com/?size=96&id=cI4E4WYnhBN6&format=png" alt="Lokalna" style="width: 80px; height: 80px;">
+                    </div>
+                    <h3>Wersja Lokalna</h3>
+                    <p>Maksymalna prędkość w sieci domowej. Idealna do dużych plików i folderów.</p>
+                    <a href="https://www.dropbox.com/scl/fi/bjmqqxi7pl7wkgfu58que/SATVRN.exe?rlkey=i1y9l8h3kr4rn0s12of0pdsqt&e=1&st=uhb0l2dh&dl=1" class="btn-action btn-download">
+                        Pobierz (.exe)
+                    </a>
+                    <span class="version-tag">Windows 10/11 | 13MB</span>
+                </div>
+
+                <div class="card-choice">
+                    <div class="icon-big">
+                        <img src="https://img.icons8.com/?size=96&id=XnQmDCocQst0&format=png" alt="Online" style="width: 80px; height: 80px;">
+                    </div>
+                    <h3>Wersja Online</h3>
+                    <p>Przesyłaj przez przeglądarkę dzięki technologii P2P bez zbędnej instalacji.</p>
+                    <a href="https://satvrntransfer-github-io.onrender.com/" class="btn-action btn-online">
+                        Uruchom Web App
+                    </a>
+                    <span class="version-tag">Wymaga nowoczesnej przeglądarki</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="icon">✦</div>
+                <h3>Grid Obsidian</h3>
+                <p>Nowoczesny interfejs 3D, który reaguje na ruch Twojej myszy. Zarządzaj plikami w estetycznym i płynnym środowisku.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">📱</div>
+                <h3>Skanuj i Działaj</h3>
+                <p>Wystarczy jeden skan kodu QR z telefonu, aby natychmiast połączyć urządzenia. Żadnego wpisywania adresów IP.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🛡️</div>
+                <h3>Prywatność Lokalna</h3>
+                <p>Twoje dane nigdy nie opuszczają Twojej sieci domowej lub są szyfrowane P2P w wersji online.</p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 SATVRN TRANSFER. Wszystkie prawa zastrzeżone. <br>
+            Powered by 1kritsu.
+        </footer>
+    </div>
+
+</body>
+</html>
