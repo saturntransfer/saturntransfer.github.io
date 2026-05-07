@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATVRN | Pobierz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #a855f7;
+            --blue: #3b82f6;
+            --dark: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Tło z poświatą */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, rgba(168, 85, 247, 0.15), transparent 50%),
+                        radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.1), transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero */
+        header {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .badge {
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--purple);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 60%, rgba(255,255,255,0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: #888;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Przyciski */
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 80px;
+        }
+
+        .btn-main {
+            background: white;
+            color: black;
+            padding: 18px 40px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        .version-info {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Tabelki Opisowe (Grid) */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding-bottom: 100px;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 40px;
+            transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: var(--purple);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #777;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+        /* Dekoracja poświaty przy kafelkach */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.1), transparent 50%);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header>
+            <div class="badge">DISCORD: .1kritsu</div>
+            <h1>SATVRN TRANSFER</h1>
+            <p class="subtitle">Przesyłaj pliki z dowolnego urządzenia w Twojej sieci z prędkością światła. Bez kabli, bez chmury, bez limitów.</p>
+            
+            <div class="cta-group">
+                <div>
+                    <a href="https://www.dropbox.com/scl/fi/bjmqqxi7pl7wkgfu58que/SATVRN.exe?rlkey=i1y9l8h3kr4rn0s12of0pdsqt&e=1&st=uhb0l2dh&dl=1" class="btn-main">
+                        Pobierz dla Windows (.exe)
+                    </a>
+                    <span class="version-info">Rozmiar: 13MB | Wymaga Windows 10/11</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="icon">✦</div>
+                <h3>Grid Obsidian</h3>
+                <p>Nowoczesny interfejs 3D, który reaguje na ruch Twojej myszy. Zarządzaj plikami w estetycznym i płynnym środowisku.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">📱</div>
+                <h3>Skanuj i Działaj</h3>
+                <p>Wystarczy jeden skan kodu QR z telefonu, aby natychmiast połączyć urządzenia. Żadnego wpisywania adresów IP.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🛡️</div>
+                <h3>Prywatność Lokalna</h3>
+                <p>Twoje dane nigdy nie opuszczają Twojej sieci domowej. Transfer odbywa się bezpośrednio między komputerem a telefonem.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">🚀</div>
+                <h3>Zero Konfiguracji</h3>
+                <p>Wersja One-File. Pobierasz, uruchamiasz i gotowe. Program sam dba o serwer, porty i zabezpieczenia.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h3>Multi-Upload</h3>
+                <p>Wysyłaj wiele plików jednocześnie bezpośrednio z galerii zdjęć lub menedżera plików w Twoim smartfonie.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon">💎</div>
+                <h3>Custom UI</h3>
+                <p>Design inspirowany ciemnym trybem premium. Przezroczystości Glassmorphism i purpurowe akcenty glow.</p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 SATVRN TRANSFER. Wszystkie prawa zastrzeżone. <br>
+            Powered by 1kritsu.
+        </footer>
+    </div>
+
+</body>
+</html>
